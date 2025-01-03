@@ -41,6 +41,13 @@ VALIDATE $? "enable mysql"
 systemctl start mysqld &>>$FULLPATH
 VALIDATE $? "start mysql" 
 
+mysql -h db.aws82s.online -u root -pExpenseApp@1 -e"show databases;"
+
+if [ $? -eq 0 ]
+then 
+echo -e "$G Already Password reset"
+else
+
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$FULLPATH
 VALIDATE $? "Set user password" 
 fi
