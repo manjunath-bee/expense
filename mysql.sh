@@ -31,17 +31,17 @@ else
 then 
 echo -e "$G Already Installed MYSQL"
 else
-dnf install mysql-server -y &>$FULLPATH
+dnf install mysql-server -y &>>$FULLPATH
 
 VALIDATE $? "mysql" 
 
-systemctl enable mysqld &>$FULLPATH
+systemctl enable mysqld &>>$FULLPATH
 VALIDATE $? "enable mysql" 
 
-systemctl start mysqld &>$FULLPATH
+systemctl start mysqld &>>$FULLPATH
 VALIDATE $? "start mysql" 
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>$FULLPATH
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$FULLPATH
 VALIDATE $? "Set user password" 
 fi
 fi
