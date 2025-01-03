@@ -1,0 +1,20 @@
+
+
+
+Please be aware that with aurora, If the cluster is idle (no client writes), replication will only see the internal monitoring activity , which occurs roughly every 20 milliseconds. For lack of a better reference, automation will therefore report a  replication lag of ~20ms-25 ms. You can confirm the same by running the query on idle cluster from any node
+
+SELECT server_id, IF(session_id = 'master_session_id', 'writer', 'reader') AS ROLE, replica_lag_in_msec FROM mysql.ro _replica_status;
+
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html#Aurora.Replication.Replicas 
+
+https://command-center.support.aws.a2z.com/case-console?CSGroupId=916c65c7-fcd1-4076-9c17-ef3b59252ced#/cases/10883075291/correspondences
+
+https://quip-amazon.com/lX8bAKqpFi2h/Root-Cause-read-replica-FALLBEHIND
+
+
+https://guide.aws.dev/articles/AR-9Uz4v_YSDWtyjMni-gLCQ/troubleshoot-replica-lag-and-reader-fall-behind-issue-in-aurora-intra-cluster
+
+Kumo: https://guide.aws.dev/articles/ARSjdeNzvOQaiWQdNmKJhCqQ/troubleshooting-aurora-csdd-log-file-via-scripts
+Kumo: https://guide.aws.dev/articles/ARTBYxadPnTJOGgQ1t5CzLfA/troubleshooting-aurora-csdd-log-file-via-scripts-for-read-replica-fall-behind-issue
+
+
