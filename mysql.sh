@@ -47,9 +47,9 @@ if [ $? -eq 0 ]
 then 
 echo -e "$G Already Password reset"
 else
-
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$FULLPATH
 VALIDATE $? "Set user password" 
+fi
 fi
 fi
 
